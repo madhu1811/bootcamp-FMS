@@ -32,7 +32,7 @@ public class FlightServiceImpl implements FlightService {
 		  if(flightRepo.existsById(flight.getFlightNumber())) {
 			 throw new FlightException("Flight Already Exits");
 		  }
-		 return flightRepo.saveAndFlush(flight);
+		 return flightRepo.save(flight);
 	  }	
 	  
 
@@ -64,13 +64,13 @@ public class FlightServiceImpl implements FlightService {
 				throw new FlightException("Id not found");
 			}
 
-			 return flightRepo.saveAndFlush(newFlightData);
+			 return flightRepo.save(newFlightData);
 
 	}
 
 	 @Override
 		public List<Flight> viewAll(){	
-			return flightRepo.findAll();
+			return (List<Flight>) flightRepo.findAll();
 		}
 
 
